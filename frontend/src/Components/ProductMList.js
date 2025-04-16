@@ -73,7 +73,7 @@ function ProductMList() {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 6 }}>
+    <Container sx={{ mt: 6 }}>
       <Typography variant="h4" align="center" gutterBottom>
         Product List
       </Typography>
@@ -115,7 +115,7 @@ function ProductMList() {
 
       <Grid container spacing={3}>
         {products.map((product) => (
-          <Grid item xs={12} key={product._id}>
+          <Grid item xs={12} sm={6} key={product._id}>
             <Card elevation={3}>
               <CardContent>
                 <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
@@ -134,7 +134,7 @@ function ProductMList() {
                     </IconButton>
                   </Box>
                 </Box>
-                <Box display="flex" justifyContent="center">
+                <Box display="flex" justifyContent="center" mt={2}>
                   <QRCode
                     value={`Product Name: ${product.name}, Price: ${product.price}, Category: ${product.category}`}
                     size={128}
