@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./JWTregister.css"; // 👈 Import CSS file
+import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+import "./JWTregister.css";
 
 const JWTregister = () => {
   const [user, setUser] = useState({
@@ -9,6 +10,8 @@ const JWTregister = () => {
     password: "",
     role: "user",
   });
+
+  const navigate = useNavigate(); // ✅ Initialize navigate
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -19,6 +22,7 @@ const JWTregister = () => {
     try {
       await axios.post("https://y23mswd31133-backend.onrender.com/api/auth/jwtregister", user);
       alert("User registered successfully!");
+      navigate("/jwtlogin"); // ✅ Redirect to login page
     } catch (error) {
       console.error("Registration failed", error);
       alert("Registration failed");
